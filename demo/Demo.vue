@@ -10,23 +10,6 @@
 
 
 
-    <h2>Bar chart <small>(with async data &amp; custom theme)</small></h2>
-
-    <figure><chart :options="bar" ref="bar" theme="ovilia-green" auto-resize></chart></figure>
-
-    <template v-if="seconds < 0">
-      <p><button @click="load">Load</button></p>
-    </template>
-    <template v-else>
-      <p v-if="seconds"><small>Data coming in <b>{{seconds}}</b> second{{seconds > 1 ? 's' : ''}}...</small></p>
-      <p v-else><small>Ready.</small></p>
-    </template>
-
-
-
-
-
-
     <h2>Line chart <small>(with async data &amp; custom theme)</small></h2>
 
     <figure><chart :options="line" ref="line" theme="ovilia-green" auto-resize></chart></figure>
@@ -35,7 +18,7 @@
       <p><button @click="load_line">开始加载</button></p>
     </template>
     <template v-else>
-      <p v-if="seconds1"><small>Data coming in <b>{{seconds1}}</b> second{{seconds1 > 1 ? 's' : ''}}...</small></p>
+      <p v-if="seconds1"><small>Data coming in <b>{{seconds1}}</b> second{{seconds > 1 ? 's' : ''}}...</small></p>
       <p v-else><small>Ready.</small></p>
     </template>
 
@@ -296,7 +279,6 @@ import 'echarts/lib/component/visualMap'
 
 import 'echarts-liquidfill'
 import logo from './data/logo'
-import {initial as barInit, async as barAsync} from './data/bar'
 import {initial as lineInit, async as lineAsync} from './data/line'
 
 import pie from './data/pie'
@@ -329,7 +311,6 @@ export default {
   data () {
     return {
       logo,
-      bar: barInit,
       line: lineInit,
       pie,
       polar,
