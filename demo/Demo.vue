@@ -31,11 +31,11 @@
 
     <figure><chart :options="line" ref="line" theme="ovilia-green" auto-resize></chart></figure>
 
-    <template v-if="seconds < 0">
+    <template v-if="seconds1 < 0">
       <p><button @click="load_line">开始加载</button></p>
     </template>
     <template v-else>
-      <p v-if="seconds"><small>Data coming in <b>{{seconds}}</b> second{{seconds > 1 ? 's' : ''}}...</small></p>
+      <p v-if="seconds1"><small>Data coming in <b>{{seconds1}}</b> second{{seconds1 > 1 ? 's' : ''}}...</small></p>
       <p v-else><small>Ready.</small></p>
     </template>
 
@@ -339,6 +339,7 @@ export default {
       c2,
       polarTheme: 'dark',
       seconds: -1,
+      seconds1: -1,
       asyncCount: false,
       connected: false,
       metricIndex: 0
@@ -382,7 +383,7 @@ export default {
 
     load_line () {
       // simulating async data from server
-      this.seconds = 3
+      this.seconds1 = 3
       let line = this.$refs.line
       line.showLoading({
         text: '正在加载',
@@ -390,8 +391,8 @@ export default {
         maskColor: 'rgba(255, 255, 255, 0.4)'
       })
       let timer = setInterval(() => {
-        this.seconds--
-        if (this.seconds === 0) {
+        this.seconds1--
+        if (this.seconds1 === 0) {
           clearTimeout(timer)
           line.hideLoading()
           line.mergeOptions(lineAsync)
