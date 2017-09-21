@@ -1,19 +1,11 @@
 <template>
-
   <main>
     <chart id="logo" :options="logo" auto-resize></chart>
-
     <h1><a href="https://github.com/Justineo/vue-echarts">Vue-ECharts</a></h1>
-
     <p class="desc">ECharts component for Vue.js.</p>
 
-
-
-
     <h2>Bar chart <small>(with async data &amp; custom theme)</small></h2>
-
     <figure><chart :options="bar" ref="bar" theme="ovilia-green" auto-resize></chart></figure>
-
     <template v-if="seconds < 0">
       <p><button @click="load">Load</button></p>
     </template>
@@ -21,28 +13,6 @@
       <p v-if="seconds"><small>Data coming in <b>{{seconds}}</b> second{{seconds > 1 ? 's' : ''}}...</small></p>
       <p v-else><small>Ready.</small></p>
     </template>
-
-
-
-
-
-
-    <h2>Line chart <small>(with async data &amp; custom theme)</small></h2>
-
-    <figure><chart :options="line" ref="line" theme="ovilia-green" auto-resize></chart></figure>
-
-    <template v-if="seconds < 0">
-      <p><button @click="load_line">开始加载</button></p>
-    </template>
-    <template v-else>
-      <p v-if="seconds"><small>Data coming in <b>{{seconds}}</b> second{{seconds > 1 ? 's' : ''}}...</small></p>
-      <p v-else><small>Ready.</small></p>
-    </template>
-
-
-
-
-
 
     <h2>Pie chart <small>(with action dispatch)</small></h2>
     <figure><chart :options="pie" ref="pie" auto-resize></chart></figure>
@@ -297,8 +267,6 @@ import 'echarts/lib/component/visualMap'
 import 'echarts-liquidfill'
 import logo from './data/logo'
 import {initial as barInit, async as barAsync} from './data/bar'
-import {initial as lineInit, async as lineAsync} from './data/line'
-
 import pie from './data/pie'
 import polar from './data/polar'
 import scatter from './data/scatter'
@@ -330,7 +298,6 @@ export default {
     return {
       logo,
       bar: barInit,
-      line: lineInit,
       pie,
       polar,
       scatter,
@@ -378,30 +345,6 @@ export default {
         }
       }, 1000)
     },
-
-
-    load_line () {
-      // simulating async data from server
-      this.seconds = 3
-      let line = this.$refs.line
-      line.showLoading({
-        text: '正在加载',
-        color: '#4ea397',
-        maskColor: 'rgba(255, 255, 255, 0.4)'
-      })
-      let timer = setInterval(() => {
-        this.seconds--
-        if (this.seconds === 0) {
-          clearTimeout(timer)
-          line.hideLoading()
-          line.mergeOptions(lineAsync)
-        }
-      }, 1000)
-    },
-
-
-
-
     convert () {
       let map = this.$refs.map
       let src = map.getDataURL({
