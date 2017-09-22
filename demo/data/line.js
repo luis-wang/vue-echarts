@@ -1,29 +1,5 @@
-let initial2 = {
-  title: {
-    text: '异步数据加载示例111'
-  },
-  tooltip: {},
-  legend: {
-    data: ['销量']
-  },
-  xAxis: {
-    data: []
-  },
-  yAxis: {
-    axisLabel: {show: false}
-  },
-  series: [{
-    name: '销量',
-    type: 'line',
-    data: []
-  }]
-}
-
 export let initial = {
-    title : {
-        text: '某楼盘销售情况',
-        subtext: '纯属虚构'
-    },
+    title : {},
     tooltip : {
         trigger: 'axis'
     },
@@ -49,6 +25,10 @@ export let initial = {
 
 // 异步加载的
 export let async = {
+    title : {
+        text: '某楼盘销售情况11',
+        subtext: '纯属虚构'
+    },
     xAxis: [
         {
             type : 'category',
