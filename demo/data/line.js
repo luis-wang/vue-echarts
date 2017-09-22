@@ -41,9 +41,9 @@ export let initial = {
         }
     },
     calculable: true,
-    xAxis : [],
-    yAxis: {},
-    series : []
+    xAxis: [],
+    yAxis: [],
+    series: []
 };
 
 
