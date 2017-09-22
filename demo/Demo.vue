@@ -364,13 +364,14 @@ export default {
 
     load_line () {
       // simulating async data from server
-      this.seconds1 = 3
+
       let line = this.$refs.line
       line.showLoading({
         text: '正在加载',
         color: '#4ea397',
         maskColor: 'rgba(255, 255, 255, 0.4)'
       })
+      this.seconds1 = 3
       let timer = setInterval(() => {
         this.seconds1--
         if (this.seconds1 === 0) {
@@ -379,6 +380,7 @@ export default {
           line.mergeOptions(lineAsync)
         }
       }, 1000)
+
     },
 
 
@@ -430,6 +432,35 @@ export default {
       })
     }, 1000)
     this.connected = true
+
+    setInterval(() => {
+
+    }, 1000);
+
+
+    // 三秒后自动开始加载
+    let line = this.$refs.line
+    line.showLoading({
+      text: '正在加载',
+      color: '#4ea397',
+      maskColor: 'rgba(255, 255, 255, 0.4)'
+    })
+    this.seconds1 = 3
+    let timer = setInterval(() => {
+      this.seconds1--
+      if (this.seconds1 === 0) {
+        clearTimeout(timer)
+        line.hideLoading()
+        line.mergeOptions(lineAsync)
+      }
+    }, 1000)
+
+
+
+
   }
+
+
+
 }
 </script>
