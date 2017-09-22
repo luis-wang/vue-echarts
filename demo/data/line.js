@@ -27,9 +27,9 @@ export let initial = {
     tooltip : {
         trigger: 'axis'
     },
-    legend: {
-        data:[]
-    },
+    //legend: {
+    //    data:[]
+    //},
     toolbox: {
         show : true,
         feature : {
@@ -40,18 +40,18 @@ export let initial = {
             saveAsImage : {show: true}
         }
     },
-    calculable : true,
+    calculable: true,
     xAxis : [],
     yAxis: {
       axisLabel: {show: false}
     },
-    series : []
+    //series : []
 };
 
 
 // 异步加载的
 export let async = {
-    xAxis : [
+    xAxis: [
         {
             type : 'category',
             boundaryGap : false,
@@ -62,7 +62,7 @@ export let async = {
         data:['意向','预购','成交']
     },
 
-    yAxis : [
+    yAxis: [
         {
             type : 'value',
             show: true
