@@ -42,10 +42,8 @@ export let initial = {
     },
     calculable: true,
     xAxis : [],
-    yAxis: {
-      axisLabel: {show: false}
-    },
-    //series : []
+    yAxis: {},
+    series : []
 };
 
 
@@ -68,7 +66,7 @@ export let async = {
             show: true
         }
     ],
-    series : [
+    series: [
         {
             name:'成交',
             type:'line',
