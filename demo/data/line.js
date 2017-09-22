@@ -28,7 +28,7 @@ export let initial = {
         trigger: 'axis'
     },
     legend: {
-        data:['意向','预购','成交']
+        data:[]
     },
     toolbox: {
         show : true,
@@ -41,6 +41,16 @@ export let initial = {
         }
     },
     calculable : true,
+    xAxis : [],
+    yAxis: {
+      axisLabel: {show: false}
+    },
+    series : []
+};
+
+
+// 异步加载的
+export let async = {
     xAxis : [
         {
             type : 'category',
@@ -48,9 +58,14 @@ export let initial = {
             data : ['周一','周二','周三','周四','周五','周六','周日']
         }
     ],
+    legend: {
+        data:['意向','预购','成交']
+    },
+
     yAxis : [
         {
-            type : 'value'
+            type : 'value',
+            show: true
         }
     ],
     series : [
@@ -76,23 +91,4 @@ export let initial = {
             data:[1320, 1132, 601, 234, 120, 90, 20]
         }
     ]
-};
-
-
-let asyncData = {
-  categories: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子'],
-  data: [5, 20, 36, 10, 10, 20]
-}
-
-export let async = {
-  xAxis: {
-    data: asyncData.categories
-  },
-  yAxis: {
-    axisLabel: {show: true}
-  },
-  series: [{
-    name: '销量',
-    data: asyncData.data
-  }]
 }
